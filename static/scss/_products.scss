@@ -1,0 +1,144 @@
+.products {
+    @extend .section-spacing;
+
+    h1 {
+        @extend .section-title;
+    }
+
+    > div {
+        @include flex($horizontal: flex-start, $vertical: flex-start);
+    }
+
+    aside {
+        width: 230px;
+
+        h3 {
+            @include font(18px, 300);
+
+            margin-bottom: 20px;
+        }
+        
+        > div {
+            margin-bottom: 50px;
+        }
+    }
+
+    article {
+        @include flex($horizontal: space-between);
+
+        margin: -20px -10px;
+
+        figure {
+            @extend .border;
+
+            @include flex(column);
+            @include size(400px, 100%);
+
+            margin: 20px 10px;
+            padding: 25px 15px;
+            position: relative;
+
+            &:hover {
+                box-shadow: 3px 3px 4px 0 rgba(black, .3);
+            }
+        }
+
+        .card-header {
+            @include flex();
+            @include size(180px, 240px);
+
+            margin-bottom: auto;
+            overflow: hidden;
+        }
+
+        figcaption {
+            @include size(auto, 100%);
+        }
+
+        h2 {
+            @extend
+                .text-capitalize,
+                .d-block;
+
+            @include font(15px);
+
+            color: #333;
+            line-height: 20px;
+            margin-bottom: 15px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .small {
+            opacity: .8;
+
+            &.small-plus {
+                margin-bottom: 30px;
+            }
+        }
+
+        .product-price {
+            @extend .text-danger;
+
+            @include font(15px, 600);
+        }
+
+        .counter {
+            justify-content: space-between;
+
+            input {
+                margin-right: 25px;
+            }
+        }
+
+        [class^='label-'] {
+            @extend .text-center;
+
+            @include font(14px, 300);
+
+            color: white;
+            position: absolute;
+            right: -1px;
+            width: 72px;
+            padding: 5px 0;
+
+            &.label-red {
+                @extend .bg-danger;
+
+                top: 40px;
+            }
+
+            &.label-blue {
+                @extend .bg-info;
+
+                top: 75px;
+            }
+        }
+    }
+
+    @include media-breakpoint-up (sm){
+        article {
+            figure {
+                width: 236px;
+            }
+
+            .card-header {
+                @include size(160px, 100%);
+
+                img {
+                    width: 95%;
+                }
+            }
+
+            .counter {
+                justify-content: space-between;
+
+                input {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

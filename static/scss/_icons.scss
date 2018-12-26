@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "luma-icons";
+    src: url("/static/fonts/Luma-Icons.woff2") format("woff");
+}
+
+.icon {
+    padding-bottom: 3px;
+
+    &::before {
+        font-family: luma-icons;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        line-height: 1;
+        text-decoration: inherit;
+        text-rendering: optimizeLegibility;
+        vertical-align: middle;
+        display: inline-block;
+        overflow: hidden;
+        text-align: center;
+        text-transform: none;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+    }
+}
+
+.icon-pencil::before { content: '\e601'; }
+.icon-trash::before { content: '\e604'; }
+.icon-arrow-right::before { content: '\e608'; }
+.icon-hamburger::before { content: '\e609'; }
+.icon-cart::before { content: '\e611'; }
+.icon-search::before { content: '\e615'; }
+.icon-close::before { content: '\e616'; }
+.icon-arrow-down::before { content: '\e622'; }
+.icon-mail::before { content: '\e61d'; }

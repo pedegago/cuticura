@@ -1,0 +1,23 @@
+.counter {
+    @include flex($wrap: nowrap);
+
+    input {
+        @extend .form-control;
+
+        height: 33px;
+        padding-bottom: 4px;
+        padding-top: 4px;
+
+        &::placeholder {
+            @include font(13px);
+        }
+    }
+
+    button {
+        @extend .btn-primary;
+
+        @include font(13px);
+
+        height: 33px;
+    }
+}

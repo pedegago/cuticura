@@ -1,0 +1,79 @@
+* {
+    //outline: 1px solid brown;
+}
+
+body {
+    @include font(14px);
+
+    color: $font-color;
+    font-family: 'Open Sans', sans-serif;
+}
+
+ol,
+ul,
+figure {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    @extend
+        .btn,
+        .font-weight-bold;
+
+    @include font(14px);
+}
+
+input,
+textarea {
+    @extend .form-control,
+            .form-control-sm;
+}
+
+.container-fluid {
+    max-width: $body-max_width;
+}
+
+.section-spacing {
+    @extend .container-fluid;
+
+    margin-bottom: 65px;
+    margin-top: 20px;
+
+    @include media-breakpoint-up(md) {
+        margin-top: 0;
+    }
+}
+
+.section-title {
+    @extend .text-capitalize;
+
+    @include font(26px, 300);
+
+    line-height: 1.1;
+    margin-bottom: 20px;
+
+    @include media-breakpoint-up(md) {
+        @include font(40px);
+
+        margin-bottom: 40px;
+    }
+}
+
+.icon-link {
+    @extend .icon;
+
+    @include font(22px);
+
+    color: #757575;
+    cursor: pointer;
+
+    &:hover {
+        color: #333;
+    }
+
+    &:active {
+        color: #757575;
+    }
+}

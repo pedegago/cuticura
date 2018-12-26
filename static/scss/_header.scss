@@ -1,0 +1,128 @@
+header {
+    .header-top {
+        @extend
+            .d-none,
+            .d-md-block,
+            .text-right;
+
+        background-color: #6e716e;
+        color: $white;
+        padding: 10px 0;
+
+        > div {
+            @extend .container-fluid;
+        }
+
+        a {
+            color: white;
+            margin: 0 12px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .header-main {
+        @extend .container-fluid;
+
+        @include flex();
+
+        border-bottom: 1px solid $border-color;
+        height: 72px;
+
+        .logo {
+            @extend .mr-auto;
+
+            margin-right: 12px;
+
+            img {
+                @include size(43px, 148px);
+            }
+        }
+
+        .search-container {
+            @extend
+                .d-none,
+                .d-md-block;
+
+            margin-right: 12px;
+            width: 250px;
+        }
+
+        a:not([href]) {
+            @extend .icon-link;
+
+            &:not(:last-child) {
+                margin-right: 12px;
+            }
+
+            &.icon-search {
+                @extend .d-md-none;
+            }
+
+            &.icon-cart {
+                span {
+                    @extend .text-center;
+
+                    @include font(14px, 400, "Open Sans");
+                    @include size(24px);
+
+                    background-color: #ff5501;
+                    border-radius: 2px;
+                    color: #fff;
+                    display: inline-block;
+                    line-height: 24px;
+                    margin-left: 3px;
+                    text-shadow: 0 0 7px #000;
+                }
+            }
+
+            &.icon-hamburger {
+                @extend
+                    .pl-0,
+                    .d-md-none;
+
+                @include font(28px);
+
+                margin-right: 12px;
+            }
+        }
+    }
+
+    .header-bottom {
+        @extend
+            .d-md-none,
+            .container-fluid;
+
+        border-bottom: 1px solid $border-color;
+        display: none;
+
+        &.expanded {
+            display: block;
+        }
+
+        .search-control {
+            margin: 15px 0;
+        }
+
+        i {
+            @extend .d-none;
+        }
+    }
+
+    @include media-breakpoint-up (md){
+        .header-main {
+            border: 0;
+            height: 91px;
+        }
+
+        .header-bottom.expanded {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,194 @@
+body {
+    overflow-x: hidden;
+
+    .main-container {
+        left: 0;
+        position: relative;
+        transition: left .3s;
+
+        &.expanded {
+            left: calc(100% - 60px);
+        }
+    }
+
+    @include media-breakpoint-up (md){
+        overflow-x: auto;
+
+        .main-container.expanded {
+            position: static;
+        }
+    }
+}
+
+.navigation {
+    @include size(100%);
+
+    &.expanded {
+        .navigation-main {
+            left: 0;
+        }
+
+        .navigation-toggle {
+            @include size(100%);
+
+            background-color: rgba(black, .7);
+            cursor: pointer;
+            display: inline-block;
+        }
+    }
+
+    .navigation-main {
+        @include size(100%, calc(100% - 54px));
+
+        background-color: #f0f0f0;
+        left: calc(-1 * (100% - 54px));
+        position: fixed;
+        top: 0;
+        transition: left .3s;
+        z-index: 1031;
+
+        div {
+            background-color: #f0f0f0;
+            margin-bottom: 25px;
+
+            a:not([href]) {
+                @extend .text-center;
+
+                color: #006bb4;
+                cursor: pointer;
+                display: inline-block;
+                padding: 25px 0;
+                width: 33.33%;
+
+                &:active {
+                    color: #ff5501;
+                }
+
+                &.tab-active {
+                    background-color: #f0f0f0;
+
+                    &:last-child,
+                    &:first-child ~ a {
+                        border-left: 1px solid $border-color;
+                    }
+                }
+
+                &:not(.tab-active) {
+                    background-color: #e3e3e3;
+                    border-bottom: 1px solid $border-color;
+                    padding-bottom: 24px;
+                }
+            }
+        }
+
+        nav {
+            @include font(16px, bold);
+
+            border-top: 1px solid $border-color;
+
+            .navigation-main-list {
+                text-transform: uppercase;
+            }
+
+            ul:not(.tab-active) {
+                display: none;
+            }
+
+            a {
+                color: #575757;
+                position: relative;
+
+                &.link-active {
+                    color: #333;
+
+                    &::before {
+                        @include size(100%, 8px);
+
+                        border-left: 8px solid #ff5501;
+                        content: '';
+                        left: 0;
+                        position: absolute;
+                        top: 0;
+                    }
+                }
+            }
+
+            a,
+            span {
+                border-bottom: 1px solid $border-color;
+                display: block;
+                padding: 7px 15px;
+            }
+        }
+    }
+
+    .navigation-toggle {
+        background-color: transparent;
+        display: none;
+        position: fixed;
+        top: 0;
+        z-index: 1030;
+    }
+
+    @include media-breakpoint-up (md){
+        .navigation-main {
+            position: static;
+            width: 100%;
+
+            div {
+                display: none;
+            }
+
+            nav {
+                @include make-container();
+
+                border: 0;
+                max-width: $body-max_width;
+
+                ul {
+                    display: none;
+                }
+
+                ul.navigation-main-list,
+                ul.navigation-main-list.tab-active {
+                    @include flex($horizontal: flex-start);
+
+                    li:first-child a {
+                        padding-left: 0;
+                    }
+
+                    li:not(:last-child) {
+                        margin-right: 10px;
+                    }
+                }
+
+                a {
+                    @include font(14px);
+
+                    border: 0;
+                    padding: 13px 12px;
+                    text-transform: capitalize;
+
+                    &.link-active {
+                        border-bottom: 3px solid #ff5501;
+                        padding-bottom: 10px;
+
+                        &::before {
+                            display: none;
+                        }
+                    }
+
+                    &:hover {
+                        color: #333;
+                    }
+                }
+            }
+        }
+
+        &.expanded {
+            .navigation-toggle {
+                display: none;
+            }
+        }
+    }
+}

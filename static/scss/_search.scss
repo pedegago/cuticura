@@ -1,0 +1,23 @@
+.search-control {
+    @extend .w-100;
+
+    @include flex($wrap: nowrap);
+
+    position: relative;
+
+    input {
+        padding-right: ($spacer * 2.3333);
+    }
+
+    i {
+        @extend
+            .icon,
+            .icon-search;
+
+        @include font(16px);
+
+        color: #bababa;
+        position: absolute;
+        right: 10px;
+    }
+}

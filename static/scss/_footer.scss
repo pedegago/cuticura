@@ -1,0 +1,106 @@
+footer {
+    border-top: 1px solid $border-color;
+
+    > div {
+        @extend .container-fluid;
+
+        padding-top: 20px;
+    }
+
+    .subscription-control {
+        @include flex($wrap: nowrap);
+
+        position: relative;
+
+        i {
+            @include icon('mail');
+
+            @include font(16px);
+
+            color: #575757;
+            left: 10px;
+            position: absolute;
+        }
+
+        input {
+            @extend .border-right-0;
+
+            padding-left: 35px;
+        }
+
+        button {
+            @extend
+                .btn-sm,
+                .btn-primary;
+        }
+    }
+
+    nav {
+        background-color: #f4f4f4;
+        margin: 20px -20px 0 -20px;
+
+        a {
+            @extend .d-block;
+
+            @include font(16px);
+
+            border-top: 1px solid $border-color;
+            color: #575757;
+            padding: 9px 20px;
+
+            &:hover {
+                color: #333;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    p {
+        @extend .text-center;
+
+        @include font(12px);
+
+        color: white;
+        background-color: #6e716e;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        span {
+            @extend .container-fluid;
+        }
+    }
+
+    @include media-breakpoint-up (md){
+        background-color: #f4f4f4;
+        border-top: 0;
+
+        > div {
+            @include flex($horizontal: space-between, $vertical: flex-start);
+
+            padding-bottom: 20px;
+        }
+
+        .subscription-control {
+            order: 1;
+            width: 34%;
+        }
+
+        nav {
+            @include flex($horizontal: flex-start, $vertical: flex-start);
+
+            margin: 0;
+
+            a {
+                @include font(14px);
+
+                border: 0;
+                padding: 0;
+                padding-bottom: 8px;
+            }
+        }
+
+        ul {
+            margin-right: 88px;
+        }
+    }
+}

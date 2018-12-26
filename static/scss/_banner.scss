@@ -1,0 +1,267 @@
+.banner {
+    margin-bottom: 65px;
+    margin-top: 20px;
+
+    figure {
+        @include size(100%);
+
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    p {
+        @include font(16px, 300);
+        color: #333;
+        line-height: 1.4;
+        padding: 15px 20px 20px;
+    }
+
+    span {
+        @extend .d-block;
+        opacity: .8;
+
+        &.title {
+            @include font(22px);
+
+            line-height: 1.2;
+            opacity: 1;
+        }
+
+        &.text-margin {
+            margin-bottom: 20px;
+        }
+
+        &.small {
+            @include font(11px);
+
+            opacity: .6;
+        }
+
+        &.more-link {
+            @include font(14px, 400);
+
+            margin-top: 10px;
+            opacity: 1;
+
+            i {
+                @include font(10px);
+                @include icon('arrow-right');
+
+                &::before {
+                    margin-left: 5px;
+                    margin-bottom: 1px;
+                }
+            }
+        }
+    }
+
+    .banner-main {
+        @extend .d-block;
+
+        height: 450px;
+        margin-bottom: 8px;
+        overflow-y: hidden;
+        position: relative;
+
+        figure {
+            background-image: url('/static/images/bg_banner_main.jpg');
+            background-position: -310px 0;
+        }
+
+        p {
+            background-color: white;
+            opacity: .9;
+            position: absolute;
+            right: 0;
+            top: 20px;
+            width: 65%;
+
+            span {
+                margin: 10px 0 25px;
+                color: black;
+            }
+
+            button {
+                @extend .btn-primary;
+
+                @include font(12px);
+            }
+        }
+    }
+
+    .banner-secondary-left {
+        display: block;
+        margin-bottom: 8px;
+        position: relative;
+
+        figure {
+            background-image: url('/static/images/img_woman_original_soap_sale.jpg');
+            height: 266px;
+        }
+
+        p {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+        }
+
+        .title-strong {
+            @include font(40px, 600, "Helvetica");
+
+            color: #f76a00;
+            line-height: 54px;
+            opacity: 1;
+        }
+    }
+
+    .banner-secondary-right {
+        background-color: #F5F6F1;
+        display: block;
+
+        figure {
+            overflow: hidden;
+            padding: 20px 20px 0;
+        }
+
+        img {
+            @include size(199px, 440px);
+        }
+
+        span {
+            &:nth-child(1) {
+                margin-bottom: 15px;
+            }
+
+            &:nth-child(2) {
+                margin-bottom: 10px;
+            }
+
+            &:nth-child(3) {
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 400px) {
+        .banner-main {
+            figure {
+                background-position: 0;
+            }
+        }
+    }
+
+    @include media-breakpoint-up(md){
+        @include make-container;
+        max-width: $body-max_width;
+
+        span.more-link {
+            @include font(16px);
+
+            margin-top: 20px;
+
+            i {
+                @include font(12px);
+            }
+        }
+
+        .banner-main {
+            margin-bottom: 16px;
+
+            p {
+                @include font(22px);
+
+                padding: 25px 35px 35px;
+                top: 40px;
+                right: 40px;
+                width: 40%;
+
+                span {
+                    @include font(32px);
+
+                    margin: 20px 0 25px;
+                }
+
+                button {
+                    @include button-size(
+                        $btn-padding-y-lg,
+                        $btn-padding-x-lg,
+                        14px,
+                        $btn-line-height-lg,
+                        0
+                    );
+                }
+            }
+        }
+
+        .banner-secondary-left {
+            margin-bottom: 0;
+            margin-right: 16px;
+            min-width: 231px;
+            width: 33.3%;
+
+            p {
+                @include font(22px);
+
+                padding: 25px 35px 35px;
+
+                span:not(.more-link):not(.title-strong) {
+                    opacity: .9;
+                }
+
+                .title-strong {
+                    @include font(44px);
+                }
+            }
+        }
+
+        .banner-secondary-right {
+            @include flex($wrap: nowrap);
+
+            width: calc(66.7% - 16px);
+
+            figure {
+                padding: 0;
+                padding-left: 10px;
+                text-align: right;
+                width: 60%;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            p {
+                @include font(22px);
+
+                padding: 25px 35px 35px;
+                width: 40%;
+
+                span {
+                    opacity: 1;
+
+                    &:first-child {
+                        @include font(32px);
+
+                        margin-bottom: 15px;
+                    }
+
+                    &.small {
+                        margin-top: 15px;
+                        opacity: .6;
+                    }
+                }
+            }
+        }
+
+        article {
+            @include flex(
+                $horizontal: space-between,
+                $vertical: flex-start
+            );
+
+            max-width: $body-max_width;
+        }
+    }
+}
