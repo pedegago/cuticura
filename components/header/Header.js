@@ -24,8 +24,15 @@ class Header extends Component {
         this.props.onToggleNavigation(true);
     };
 
-    toggleCart = () => {
+    toggleCart = (e) => {
+        e.preventDefault();
         this.props.onToggleCart(!this.props.toggleCart);
+    };
+
+    countCart = () => {
+        return this.props.cart.length
+            ? <span>{this.props.cart.length}</span>
+            : null;
     };
 
     render = () => {
@@ -47,6 +54,7 @@ class Header extends Component {
                     <a href="/" className="logo">
                         <img src="/static/images/logo.jpg" alt="" />
                     </a>
+
                     <div className="search-container">
                         <Search />
                     </div>
@@ -55,16 +63,14 @@ class Header extends Component {
                         onClick={this.toggleSearch}
                     />
 
-                    <a
-                        id="icon-cart"
-                        className="icon-cart"
-                        onClick={this.toggleCart}
-                    >
-                        {this.props.cart.length
-                            ? <span>{this.props.cart.length}</span>
-                            : null
-                        }
-                    </a>
+                    <div id="icon-cart" className="cart-container">
+                        <a href="/shop">
+                            {this.countCart()}
+                        </a>
+                        <a onClick={this.toggleCart}>
+                            {this.countCart()}
+                        </a>
+                    </div>
 
                 </div>
                 <div className={`header-bottom ${this.state.toggleSearch ? "expanded" : "" }`}>

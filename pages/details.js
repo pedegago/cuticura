@@ -5,6 +5,9 @@ import { onSetBreadcrumb } from "../actions/UiActions";
 
 import Counter from "../components/product/Counter";
 
+import { ALL_CATEGORIES } from "../utils/Constants";
+import { beautifyCategory } from "../utils/Utils";
+
 class Products extends Component {
     static async getInitialProps({ query }) {
 
@@ -14,10 +17,9 @@ class Products extends Component {
     componentWillMount = () => {
         this.product = this.props.products.find((p) => p.id == this.props.id);
 
-        const category = this.product.category.replace(/-/g, " ");
-
         this.props.onSetBreadcrumb([
-            { href: `/${this.product.category}`, name: category},
+            { href: `/${ALL_CATEGORIES}`, name: beautifyCategory(ALL_CATEGORIES)},
+            { href: `/${this.product.category}`, name: beautifyCategory(this.product.category)},
             { name: this.product.name}
         ]);
     };
@@ -36,7 +38,9 @@ class Products extends Component {
                         <p className="small">Per Unit:</p>
                         <p className="product-price">{`$${this.product.price}`}</p>
                         <p className="small small-plus">Plus Applicable Taxes</p>
-                        <Counter />
+
+                        <Counter id={this.product.id} />
+
                         <ul>
                             {this.product.features.map((f) => <li key={f}>{f}</li>)}
                         </ul>

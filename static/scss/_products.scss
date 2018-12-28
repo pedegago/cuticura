@@ -6,20 +6,18 @@
     }
 
     > div {
-        @include flex($horizontal: flex-start, $vertical: flex-start);
+        @include flex(column, $vertical: flex-start);
     }
 
     aside {
-        width: 230px;
-
         h3 {
-            @include font(18px, 300);
+            @extend .lead;
 
             margin-bottom: 20px;
         }
-        
+
         > div {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
     }
 
@@ -27,12 +25,13 @@
         @include flex($horizontal: space-between);
 
         margin: -20px -10px;
+        width: calc(100% + 20px);
 
         figure {
             @extend .border;
 
             @include flex(column);
-            @include size(400px, 100%);
+            @include size(auto, 100%);
 
             margin: 20px 10px;
             padding: 25px 15px;
@@ -45,10 +44,14 @@
 
         .card-header {
             @include flex();
-            @include size(180px, 240px);
+            @include size(auto, 100%);
 
-            margin-bottom: auto;
+            margin-bottom: 20px;
             overflow: hidden;
+
+            img {
+                @include size(auto, 100%);
+            }
         }
 
         figcaption {
@@ -119,17 +122,26 @@
     }
 
     @include media-breakpoint-up (sm){
+        > div {
+            @include flex($horizontal: flex-start, $vertical: flex-start);
+        }
+
+        aside {
+            margin-right: 25px;
+            width: 250px;
+        }
+
         article {
+            width: auto;
+
             figure {
-                width: 236px;
+                @include size(390px, 236px);
             }
 
             .card-header {
-                @include size(160px, 100%);
+                @include size(137px, 100%);
 
-                img {
-                    width: 95%;
-                }
+                margin-bottom: auto;
             }
 
             .counter {

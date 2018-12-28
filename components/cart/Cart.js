@@ -19,6 +19,7 @@ class Cart extends Component {
                 isOpen={this.props.toggleCart}
                 target="icon-cart"
                 toggle={this.props.toggle}
+                offset={-115}
             >
                 <a className="icon-close" onClick={() => this.props.onToggleCart(false)}/>
 
@@ -27,7 +28,7 @@ class Cart extends Component {
 
                 <PopoverBody className={`cart-footer ${hasProducts ? "border-top" : ""}`}>
                     {hasProducts
-                        ? <a href="#">View and Edit Cart</a>
+                        ? <a href="/shop">View and Edit Cart</a>
                         : <strong>You have no items in your shopping cart.</strong>
                     }
                 </PopoverBody>

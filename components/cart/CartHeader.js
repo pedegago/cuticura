@@ -5,19 +5,21 @@ import { connect } from "react-redux";
 import { PopoverHeader } from 'reactstrap';
 
 class CartHeader extends Component {
-    componentWillMount = () => {
-        this.subtotal = 0;
+    subTotal = () => {
+        let subtotal = 0;
 
         this.props.cart.map((c) => {
             for (let i = 0; i < this.props.products.length; i++){
                 const p = this.props.products[i];
 
                 if (p.id == c.id) {
-                    this.subtotal += p.price * c.quantity;
+                    subtotal += p.price * c.quantity;
                     break;
                 }
             }
         });
+
+        return subtotal.toFixed(2);
     };
 
     render = () => {
@@ -29,7 +31,7 @@ class CartHeader extends Component {
                 </p>
                 <p className="cart-subtotal">
                     Cart Subtotal:
-                    <span>${this.subtotal.toFixed(2)}</span>
+                    <span>${this.subTotal()}</span>
                 </p>
                 <button>Proceed to Checkout</button>
             </PopoverHeader>

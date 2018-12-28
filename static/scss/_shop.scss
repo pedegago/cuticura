@@ -1,0 +1,300 @@
+* {
+    //outline: 1px solid brown;
+}
+.shop {
+    @extend .section-spacing;
+
+    h1 {
+        @extend .section-title;
+    }
+
+    .no-items {
+        a {
+            &:hover {
+                color: #1979c3;
+                text-decoration: underline;
+            }
+        }
+
+        span {
+            @extend .d-block;
+
+            margin-top: 3px;
+        }
+    }
+
+    article {
+        @include flex(
+            column,
+            $vertical: flex-start,
+            $wrap: nowrap
+        );
+    }
+
+    aside {
+        @extend
+            .section-antispacing,
+            .border-top;
+
+        background: #f5f5f5;
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        width: calc(100% + #{$grid-gutter-width});
+
+        h2 {
+            @extend
+                .border-bottom,
+                .d-none,
+                .d-md-block;
+
+            @include font(24px, 300);
+
+            padding-bottom: 13px;
+        }
+
+        ul {
+            li {
+                @include flex();
+
+                margin: 10px 0;
+
+                &.grand-total {
+                    @extend .border-top;
+                    
+                    @include font(18px, 600);
+                    
+                    padding-top: 11px;
+                }
+
+                span {
+                    @extend .ml-auto;
+                }
+            }
+        }
+
+        button {
+            @extend
+                .btn-primary,
+                .btn-block;
+
+            @include font(17px, 600!important);
+
+            line-height: 22px;
+            margin: 25px 0;
+            white-space: normal;
+        }
+
+        .multi-address {
+            @extend
+                .d-block,
+                .text-center;
+
+            &:hover {
+                color: #006bb4;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    table {
+        @extend
+            .section-antispacing,
+            .border-bottom;
+
+        width: calc(100% + #{$grid-gutter-width});
+
+        thead {
+            @extend .text-right;
+
+            display: none;
+
+            th {
+                padding-bottom: 15px;
+
+                &:first-child {
+                    @extend .text-left;
+
+                    padding-left: 0;
+                }
+
+                &.item-counter {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
+            }
+        }
+
+        tbody {
+            @extend .border-top;
+
+            @include font(18px, 400);
+
+            vertical-align: top;
+
+            .item-body {
+                display: inline-block;
+                padding: 15px ($grid-gutter-width / 2);
+                padding-bottom: 0;
+
+                td {
+                    padding-top: 15px;
+
+                    &.item-name {
+                        @extend .text-left;
+
+                        display: block;
+                        margin-bottom: 25px;
+
+                        a {
+                            @include flex(
+                                $horizontal: flex-start,
+                                $vertical: flex-start,
+                                $wrap: nowrap
+                            );
+
+                            color: #333;
+                            line-height: 22px;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+
+                            img {
+                                @include size(auto, 75px);
+
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+
+                    &.item-price,
+                    &.item-counter,
+                    &.item-subtotal {
+                        &::before {
+                            @include font(14px, 600);
+
+                            display: block;
+                            margin-bottom: 3px;
+                        }
+                    }
+
+                    &.item-price,
+                    &.item-subtotal {
+                        @extend .text-right;
+
+                        color: #666;
+                        font-weight: 700;
+
+                        &.item-price {
+                            &::before {
+                                content: 'Price'
+                            }
+                        }
+
+                        &.item-subtotal {
+                            &::before {
+                                content: 'Subtotal'
+                            }
+                        }
+
+                        &::before {
+                            color: #333;
+                        }
+                    }
+
+                    &.item-counter {
+                        @extend .text-center;
+
+                        padding: 11px 15px 0 15px;
+                        width: 105px;
+
+                        &::before {
+                            content: 'Qty';
+                        }
+                    }
+                }
+            }
+
+            .item-actions {
+                td {
+                    @extend .text-right;
+
+                    padding: 15px ($grid-gutter-width / 2);
+
+                    a:not([href]) {
+                        @extend .icon-link;
+
+                        &::before {
+                            @include font(18px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-up (md){
+        article {
+            flex-direction: row;
+        }
+
+        aside {
+            border-top: 0!important;
+            margin-left: 4%;
+            order: 1;
+            padding: 24px;
+            padding-top: 19px;
+            width: 25%;
+        }
+
+        table {
+            margin-top: 24px;
+            width: 71%;
+
+            thead {
+                display: table-header-group;
+            }
+
+            tbody {
+                .item-body {
+                    display: table-row;
+                    padding: 0;
+
+                    td {
+                        padding-bottom: 45px;
+
+                        &.item-name {
+                            display: table-cell;
+                            padding-right: 15px;
+
+                            a {
+                                img {
+                                    width: 165px;
+                                }
+                            }
+                        }
+
+                        &.item-price,
+                        &.item-counter,
+                        &.item-subtotal {
+                            &::before {
+                                display: none;
+                            }
+                        }
+
+                        &.item-price,
+                        &.item-subtotal {
+                            width: 80px;
+                        }
+                    }
+                }
+
+                .item-actions {
+                    td {
+                        padding: 15px 0;
+                    }
+                }
+            }
+        }
+    }
+}

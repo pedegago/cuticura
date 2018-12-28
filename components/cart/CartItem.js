@@ -17,6 +17,8 @@ class CartItem extends Component {
                 break;
             }
         }
+
+        this.href = toDetails(this.product.name);
     };
 
     onRemove = () => {
@@ -28,22 +30,22 @@ class CartItem extends Component {
     };
 
     render = () => {
-        const href = toDetails(this.product.name);
-
         return (
             <li>
-                <a href={href}>
+                <a href={this.href}>
                     <img
                         src={this.product.image}
                         alt={this.product.name}
                     />
                 </a>
                 <div>
-                    <a href={href} className="product-name">{this.product.name}</a>
+                    <a href={this.href} className="product-name">{this.product.name}</a>
                     <p className="product-price">${this.product.price}</p>
                     Qty:
+
                     <Counter id={this.product.id} hideAddButton />
-                    <a className="icon-pencil" />
+
+                    {/* <a className="icon-pencil" /> */}
                     <a className="icon-trash" onClick={this.onRemove} />
                 </div>
             </li>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { ALL_CATEGORIES } from "../utils/Constants";
+
 class Index extends Component {
     componentDidMount = () => {
         document.querySelector(".breadcrumb").remove();
@@ -8,7 +10,7 @@ class Index extends Component {
     render = () => {
         return (
             <section className="banner">
-                <a href="#" className="banner-main">
+                <a href={`/${ALL_CATEGORIES}`} className="banner-main">
                     <figure />
                     <p>
                         Antibacterial Hand Soap & Moisturizing Body Lotion
@@ -17,7 +19,7 @@ class Index extends Component {
                     </p>
                 </a>
                 <article>
-                    <a href="#" className="banner-secondary-left">
+                    <a href="/bar-soaps" className="banner-secondary-left">
                         <figure />
                         <p>
                             <span className="title-strong">Savings!</span>
@@ -27,7 +29,7 @@ class Index extends Component {
                             <span className="more-link">Shop Soaps<i /></span>
                         </p>
                     </a>
-                    <a href="#" className="banner-secondary-right">
+                    <a href="/bar-soaps" className="banner-secondary-right">
                         <figure>
                             <img src="/static/images/img_products_current.png" alt="" />
                         </figure>

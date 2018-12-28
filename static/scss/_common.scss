@@ -1,6 +1,6 @@
-* {
-    //outline: 1px solid brown;
-}
+// * {
+//     outline: 1px solid brown;
+// }
 
 body {
     @include font(14px);
@@ -43,6 +43,20 @@ textarea {
 
     @include media-breakpoint-up(md) {
         margin-top: 0;
+    }
+}
+
+.section-antispacing {
+    margin-left: (-($grid-gutter-width / 2));
+    margin-right: (-($grid-gutter-width / 2));
+    padding-left: ($grid-gutter-width / 2);
+    padding-right: ($grid-gutter-width / 2);
+    
+    @include media-breakpoint-up(md) {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 

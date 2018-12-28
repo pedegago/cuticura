@@ -38,6 +38,7 @@ module.exports = withSass({
         paths["/"] = { page: "/" };
 
         const categories = [
+            "cuticura-products",
             "antibacterial-soap",
             "bar-soaps",
             "medicated-ointment",

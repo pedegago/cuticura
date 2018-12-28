@@ -4,6 +4,7 @@ import CombineReducers from "../reducers/CombineReducers";
 import thunk from "redux-thunk";
 import promise from "redux-promise";
 import withRedux from "next-redux-wrapper";
+
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 

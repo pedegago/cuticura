@@ -8,7 +8,7 @@ export const products = (
                 name: "Dry Skin Bar Soap - 3oz",
                 category: "bar-soaps",
                 price: 43.34,
-                image: "/static/images/img_oatmeal_3oz_6pack_01.jpg",
+                image: "/static/images/product_img.jpg",
                 features: [
                     "feature  1",
                     "feature  2",
@@ -22,7 +22,7 @@ export const products = (
                 name: "Medicated Ointment - 1oz",
                 category: "medicated-ointment",
                 price: 33.34,
-                image: "/static/images/img_medicated_ointment_022.jpg",
+                image: "/static/images/product_img.jpg",
                 features: [
                     "feature  1",
                     "feature  2",
@@ -36,7 +36,7 @@ export const products = (
                 name: "6 Pack Original Scent Bar Soap - 5.25oz",
                 category: "antibacterial-soap",
                 price: 3.34,
-                image: "/static/images/img_antibacterial_hand_soap_7oz_01.jpg",
+                image: "/static/images/product_img.jpg",
                 features: [
                     "feature  1",
                     "feature  2",
@@ -50,7 +50,7 @@ export const products = (
                 name: "Original Scent Bar Soap - 5.25oz",
                 category: "body-lotion",
                 price: 31.34,
-                image: "/static/images/img_moisturizing_body_lotion_3pack_01.jpg",
+                image: "/static/images/product_img.jpg",
                 features: [
                     "feature  1",
                     "feature  2",

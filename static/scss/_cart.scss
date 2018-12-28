@@ -67,7 +67,7 @@
     }
 
     .cart-list {
-        height: 45vh;
+        max-height: 42vh;
         padding-bottom: 0;
         padding-top: 0;
         overflow-y: auto;
@@ -87,7 +87,7 @@
             }
 
             img {
-                @include size(75px);
+                @include size(auto, 75px);
             }
 
             div {
@@ -119,17 +119,13 @@
                 .counter {
                     @extend .d-inline-block;
 
-                    margin: 0 auto 0 10px;
-                    width: 60px;
-
-                    input {
-                        padding-right: 5px;
-                    }
+                    margin: 0 auto 0 20px;
+                    width: 80px;
                 }
 
-                .icon-pencil {
-                    margin-right: 10px;
-                }
+                // .icon-pencil {
+                //     margin-right: 10px;
+                // }
             }
 
         }

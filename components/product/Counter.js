@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
+import { onToggleCart } from "../../actions/UiActions";
 import { onUpdateCart } from "../../actions/DataActions";
+
+import { scrollToTop } from "../../utils/Utils";
 
 class Counter extends Component {
     constructor(props) {
@@ -10,7 +13,8 @@ class Counter extends Component {
         this.state = {
             quantity: "",
             added: false,
-            submited: !!this.props.hideAddButton
+            submited: false,
+            diff: false
         };
     }
 
@@ -19,8 +23,16 @@ class Counter extends Component {
         const product = products.find((p) => p.id == nextProps.id);
 
         if (product){
+            let quantity = product.quantity;
+
+            if(product.quantity != nextState.quantity){
+                if (nextState.diff){
+                    quantity = nextState.quantity;
+                }
+            }
+
             return {
-                quantity: product.quantity,
+                quantity,
                 added: true,
                 submited: true
             };
@@ -30,7 +42,7 @@ class Counter extends Component {
             return {
                 quantity: added ? "" : nextState.quantity,
                 added: false,
-                submited: added ? false : nextState.submited,
+                submited: added ? false : nextState.submited
             };
         }
     };
@@ -49,13 +61,17 @@ class Counter extends Component {
     setQuantity = (e) => {
         const quantity = e.target.value;
 
+        let diff = true;
+
         if (this.validate(quantity)) {
             if (this.state.added) {
                 const products = this.props.cart;
                 const i = products.findIndex(
                     (p) => p.id == this.props.id
                 );
-    
+
+                diff = false;
+
                 this.props.onUpdateCart([
                     ...products.slice(0, i),
                     this.getProduct(quantity),
@@ -63,6 +79,11 @@ class Counter extends Component {
                 ]);
             }
         }
+
+        this.setState({
+            quantity,
+            diff
+        });
     };
 
     addToCart = () => {
@@ -79,8 +100,13 @@ class Counter extends Component {
                     this.getProduct(quantity)
                 ]);
 
+                this.props.onToggleCart(true);
+
+                scrollToTop();
+
                 this.setState({
-                    added: true
+                    added: true,
+                    diff: false
                 });
             }
         }
@@ -117,7 +143,8 @@ export const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
     return {
-        onUpdateCart: (products) => dispatch(onUpdateCart(products))
+        onUpdateCart: (products) => dispatch(onUpdateCart(products)),
+        onToggleCart: (expanded) => dispatch(onToggleCart(expanded))
     };
 };
 

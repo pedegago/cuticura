@@ -5,15 +5,41 @@ import { onSetBreadcrumb } from "../actions/UiActions";
 
 import Product from "../components/product/Product";
 
+import { ALL_CATEGORIES } from "../utils/Constants";
+import { beautifyCategory } from "../utils/Utils";
+
 class Products extends Component {
     static async getInitialProps({ query }) {
         return { category: query.category };
     }
 
     componentWillMount = () => {
-        this.title = this.props.category.replace(/-/g, " ");
+        this.title = beautifyCategory(this.props.category);
 
-        this.props.onSetBreadcrumb([{ name: this.title }]);
+        let step = [];
+
+        if (this.props.category != this.all){
+            step.push({ href: `/${ALL_CATEGORIES}`, name: beautifyCategory(ALL_CATEGORIES) });
+        }
+
+        this.props.onSetBreadcrumb([
+            ...step,
+            { name: this.title }
+        ]);
+    };
+
+    getProducts = () => {
+        const category = this.props.category;
+
+        let products = [];
+
+        this.props.products.map((p) => {
+            if (category == ALL_CATEGORIES || category == p.category){
+                products.push(<Product key={p.id} product={p} />);
+            }
+        });
+
+        return products;
     };
 
     render = () => {
@@ -23,20 +49,14 @@ class Products extends Component {
                 <div>
                     <aside>
                         <div>
-                            <h3>Compare Products</h3>
-                            <div>
-                                Some content here...
-                            </div>
-                        </div>
-                        <div>
-                            <h3>My Wish List</h3>
+                            <h3>Filters</h3>
                             <div>
                                 Some content here...
                             </div>
                         </div>
                     </aside>
                     <article>
-                        {this.props.products.map((p) => <Product key={p.id} product={p} />)}
+                        {this.getProducts()}
                     </article>
                 </div>
             </section>

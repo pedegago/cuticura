@@ -54,22 +54,18 @@ header {
             width: 250px;
         }
 
-        a:not([href]) {
-            @extend .icon-link;
+        .cart-container {
+            line-height: 0;
 
-            &:not(:last-child) {
-                margin-right: 12px;
-            }
+            a {
+                @extend .icon-link;
 
-            &.icon-search {
-                @extend .d-md-none;
-            }
+                @include icon('cart');
 
-            &.icon-cart {
                 span {
                     @extend .text-center;
 
-                    @include font(14px, 400, "Open Sans");
+                    @include font(14px, 400, 'Open Sans');
                     @include size(24px);
 
                     background-color: #ff5501;
@@ -80,6 +76,28 @@ header {
                     margin-left: 3px;
                     text-shadow: 0 0 7px #000;
                 }
+
+                &[href] {
+                    @extend .d-md-none;
+                }
+
+                &:not([href]) {
+                    @extend
+                        .d-none,
+                        .d-md-block;
+                }
+            }
+        }
+
+        a:not([href]) {
+            @extend .icon-link;
+
+            &:not(:last-child) {
+                margin-right: 12px;
+            }
+
+            &.icon-search {
+                @extend .d-md-none;
             }
 
             &.icon-hamburger {

@@ -65,7 +65,7 @@ class About extends Component {
     };
 }
 
-export const mapStateToProps = (dispatch) => {
+export const mapStateToProps = (state) => {
     return {};
 }
 

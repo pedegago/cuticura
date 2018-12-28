@@ -13,7 +13,7 @@
         @include flex();
         @include size(60vw, 100%);
 
-        margin-bottom: auto;
+        margin-bottom: 25px;
         overflow: hidden;
         position: relative;
 
@@ -49,12 +49,14 @@
             .border-top,
             .border-bottom;
 
-        padding: 25px 0;
+        flex-direction: column;
+
+        padding: 25px ($grid-gutter-width / 2);
 
         button {
             @extend .btn-block;
 
-            margin-left: 25px;
+            margin-top: 15px;
         }
     }
 
@@ -73,12 +75,9 @@
         padding-top: 25px;
     }
 
-    figure,
+    .counter,
     .description {
-        margin-left: (-($grid-gutter-width / 2));
-        margin-right: (-($grid-gutter-width / 2));
-        padding-left: ($grid-gutter-width / 2);
-        padding-right: ($grid-gutter-width / 2);
+        @extend .section-antispacing;
     }
 
     [class^='label-'] {
@@ -88,7 +87,6 @@
 
         color: white;
         position: absolute;
-        // right: 40px;
         right: 0;
         width: 72px;
         padding: 5px 0;
@@ -97,12 +95,14 @@
             @extend .bg-danger;
 
             top: 40px;
+            //top: 0px;
         }
 
         &.label-blue {
             @extend .bg-info;
 
             top: 75px;
+            //top: 35px;
         }
     }
 
@@ -119,12 +119,28 @@
             @include size(auto, 100%);
 
             margin-bottom: auto;
+            margin-right: 40px;
             overflow: hidden;
             position: relative;
         }
 
-        [class^='label-'] {
-            right: 40px;
+        figcaption {
+            width: 70%;
+        }
+
+        .counter {
+            flex-direction: row;
+            padding-left: 0;
+            padding-right: 0;
+
+            button {
+                margin-left: 25px;
+                margin-top: 0;
+            }
+        }
+
+        .description {
+            margin-top: 25px;
         }
     }
 }
