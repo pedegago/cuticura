@@ -8,7 +8,7 @@ class Footer extends Component {
     render = () => {
         return (
             <footer>
-                <div>
+                <div className="footer-main">
                     <div className="subscription-control">
                         <i />
                         <input type="email" placeholder="Enter your email address" />

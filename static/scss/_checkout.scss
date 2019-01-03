@@ -1,0 +1,455 @@
+.checkout {
+    @extend .section-spacing;
+
+    .chackout-header {
+        @extend
+            .section-antispacing,
+            .border-bottom;
+
+        @include flex($horizontal: space-between);
+
+        background-color: #f4f4f4;
+        margin-top: -20px;
+        padding: 18px 15px;
+
+        .grand-total {
+            @include font(18px, 700);
+
+            span {
+                @extend .d-block;
+
+                margin-top: 3px;
+            }
+        }
+
+        a:not([href]) {
+            @extend .icon-link;
+
+            @include icon('cart');
+
+            span {
+                @extend .text-center;
+
+                @include font(14px, 400, 'Open Sans');
+                @include size(24px);
+
+                background-color: #ff5501;
+                border-radius: 2px;
+                color: #fff;
+                display: inline-block;
+                line-height: 24px;
+                margin-left: 3px;
+                text-shadow: 0 0 7px #000;
+            }
+        }
+    }
+
+    .checkout-steps {
+        @include flex(
+            $horizontal: flex-start,
+            $vertical: flex-start
+        );
+
+        margin-bottom: 20px;
+        position: relative;
+
+        figure {
+            @include flex(column, flex-start);
+
+            width: 185px;
+
+            &:first-child {
+                hr {
+                    border-top-left-radius: 4px;
+                    border-bottom-left-radius: 4px;
+                }
+            }
+
+            &:last-child {
+                hr {
+                    border-top-right-radius: 4px;
+                    border-bottom-right-radius: 4px;
+                }
+            }
+
+            &.active-step {
+                p {
+                    @include icon('checkmark');
+
+                    &::before {
+                        @extend .border;
+
+                        @include font(18px, 600);
+                        @include size(28px);
+
+                        background-color: white;
+                        border-radius: 50%;
+                        line-height: 24px;
+                        margin-top: 2px;
+                    }
+
+                    span {
+                        display: none;
+                    }
+                }
+
+                p,
+                p::before,
+                span,
+                hr {
+                    border-color: #ff5501!important;
+                }
+
+                p,
+                hr {
+                    background-color: #ff5501;
+                }
+
+                figcaption {
+                    font-weight: 600;
+                    color: #333;
+                }
+            }
+        }
+
+        p {
+            @extend
+                .border,
+                .text-center;
+
+            @include flex();
+            @include font(18px, 600);
+            @include size(40px);
+
+            background-color: #e4e4e4;
+            margin-bottom: 5px;
+            border-radius: 50%;
+        }
+
+        span {
+            @extend .border;
+
+            @include size(28px);
+
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        figcaption {
+            @extend .text-center;
+
+            @include font(18px, 300);
+
+            color: #666;
+        }
+
+        hr {
+            @extend .border;
+
+            @include size(7px, 185px);
+
+            background-color: #e4e4e4;
+            margin: 0;
+            position: absolute;
+            top: 18px;
+            z-index: -1;
+        }
+    }
+
+    h2 {
+        @extend .border-bottom;
+
+        @include font(26px, 300);
+
+        margin: 20px 0;
+        padding-bottom: 10px;
+    }
+
+    a {
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:active {
+            color: #ff5501;
+        }
+    }
+
+    .form-group {
+        label.required::after {
+            @include font(13px);
+
+            content: '*';
+            color: #e02b27;
+            margin-left: 8px;
+        }
+
+        input {
+            @extend .form-control-sm;
+        }
+
+        .form-text {
+            @extend .text-dark;
+
+            margin-top: 10px;
+        }
+    }
+
+    .login-btn {
+        @extend .btn-sm;
+
+        border-radius: 4px;
+        font-weight: 600!important;
+        margin-bottom: 10px;
+    }
+
+    .next-btn {
+       @extend .btn-lg;
+
+        font-weight: 600;
+        margin-top: 10px;
+    }
+
+    .login-btn,
+    .next-btn {
+        @extend
+            .btn,
+            .btn-primary;
+
+        width: 100%;
+    }
+
+    .login {
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    aside {
+        .dark-area {
+            background-color: rgba(black, .5);
+            bottom: 0;
+            left: 0;
+            display: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .main-area {
+            background-color: #f4f4f4;
+            position: fixed;
+            padding: 22px 30px;
+            right: calc(-1 * (100% - 54px));
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+            transition: right .3s;
+            width: calc(100% - 54px);
+            z-index: 1031;
+
+            h3 {
+                @include font(18px, 300);
+
+                border-bottom: 0;
+                margin-bottom: 30px;
+            }
+
+            .icon-close {
+                @extend .icon-link;
+                
+                &::before {
+                    @include font(14px);
+                }
+                
+                position: absolute;
+                right: 30px;
+                top: 20px;
+            }
+
+            .cart-toggler {
+                @extend .border-bottom;
+
+                @include flex();
+                @include font(18px, 300);
+
+                cursor: pointer;
+                padding-bottom: 10px;
+
+                span {
+                    margin-right: 3px;
+                }
+
+                i {
+                    @extend .ml-auto, .icon-link;
+
+                    &::before {
+                        @include font(12px);
+
+                        color: #333;
+                    }
+                }
+            }
+
+            .cart-list {
+                padding: 0;
+
+                li {
+                    @include flex(
+                        $horizontal: space-between,
+                        $vertical: flex-start,
+                        $wrap: nowrap
+                    );
+
+                    padding-bottom: 20px;
+                    padding-top: 13px;
+
+                    &:not(:last-child) {
+                        @extend .border-bottom;
+                    }
+
+                    img {
+                        @include size(auto, 75px);
+                    }
+
+                    > div {
+                        @include flex($horizontal: flex-start);
+
+                        margin-left: 15px;
+                        width: 100%;
+
+                        a:not([href]) {
+                            &::before {
+                                @include font(18px);
+                            }
+                        }
+
+                        .product-name-container {
+                            @extend .w-100;
+
+                            @include flex(
+                                $horizontal: space-between,
+                                $vertical: flex-start,
+                                $wrap: nowrap
+                            );
+
+                            margin-bottom: 5px;
+                        }
+
+                        .product-name {
+                            line-height: 18px;
+                        }
+
+                        .product-price {
+                            @include font(16px);
+
+                            line-height: 18px;
+                            margin-left: 8px;
+                        }
+
+                        .counter {
+                            @extend .d-inline-block;
+
+                            width: 80px;
+
+                            input {
+                                @extend .border-0;
+
+                                @include font(14px);
+
+                                background-color: transparent;
+                                padding-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.expanded {
+            .dark-area {
+                display: block;
+            }
+
+            .main-area {
+                right: 0;
+            }
+        }
+    }
+
+    .shipping-methods {
+        margin-top: -20px;
+        width: 100%;
+
+        tr {
+            cursor: pointer;
+
+            &:not(:last-child) {
+                @extend .border-bottom;
+            }
+        }
+
+        th,
+        td {
+            padding: 20px;
+            position: relative;
+
+            &:first-child {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        input {
+            @include size(15px);
+
+            cursor: pointer;
+            position: static;
+            margin: 0;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+
+    @include media-breakpoint-up(md){
+        .login-btn,
+        .next-btn {
+            width: auto;
+        }
+
+        .login-btn {
+            margin-right: 20px;
+        }
+
+        .next-btn {
+            margin-left: auto;
+        }
+
+        .login {
+            text-align: left;
+        }
+
+        aside {
+            margin-top: 60px;
+
+            .dark-area {
+                display: none!important;
+            }
+
+            .main-area {
+                left: 0;
+                position: relative;
+                width: 100%;
+
+                .icon-close {
+                    display: none;
+                }
+            }
+        }
+
+        .shipping-methods {
+            width: auto;
+        }
+    }
+}

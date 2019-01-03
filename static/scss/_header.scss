@@ -110,6 +110,10 @@ header {
                 margin-right: 12px;
             }
         }
+
+        .sing-in {
+            display: none;
+        }
     }
 
     .header-bottom {
@@ -130,6 +134,26 @@ header {
 
         i {
             @extend .d-none;
+        }
+    }
+
+    &.header-checkout {
+        .header-top {
+            display: none!important;
+        }
+
+        .header-main {
+            > :not(.logo):not(.sing-in) {
+                display: none!important;
+            }
+
+            .sing-in {
+                display: block;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 

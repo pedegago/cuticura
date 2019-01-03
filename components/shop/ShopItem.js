@@ -22,7 +22,7 @@ class ShopItem extends Component {
     };
 
     onRemove = () => {
-        const newCart = this.props.cart.filter(
+        const newCart = this.props.order.products.filter(
             (c) => c.id != this.props.item.id
         );
 
@@ -63,7 +63,7 @@ class ShopItem extends Component {
 export const mapStateToProps = (state) => {
     return {
         products: state.products.products,
-        cart: state.cart.products
+        order: state.order
     };
 }
 

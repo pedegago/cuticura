@@ -23,7 +23,7 @@ class ShopSummary extends Component {
                     </li>
                 </ul>
 
-                <button>Proceed to Checkout</button>
+                <a href="/checkout" className="checkout-btn">Proceed to Checkout</a>
                 <a href="#" className="multi-address">
                     Check Out With Multiple Addresses
                 </a>

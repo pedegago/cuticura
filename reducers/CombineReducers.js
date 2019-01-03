@@ -7,7 +7,7 @@ const CombineReducers = combineReducers({
     ui: uiReducers,
 
     products: dataReducers.products,
-    cart: dataReducers.cart
+    order: dataReducers.order
 });
 
 export default CombineReducers;

@@ -55,8 +55,9 @@
             }
         }
 
-        button {
+        a {
             @extend
+                .btn,
                 .btn-primary,
                 .btn-block;
 
@@ -90,7 +91,7 @@
                 @include size(auto, 75px);
             }
 
-            div {
+            > div {
                 @include flex();
 
                 margin-left: 15px;
@@ -100,6 +101,10 @@
                     &::before {
                         @include font(18px);
                     }
+                }
+
+                .product-name-container {
+                    @extend .mr-auto;
                 }
 
                 .product-name {

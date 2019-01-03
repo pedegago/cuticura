@@ -18,7 +18,7 @@ class Products extends Component {
 
         let step = [];
 
-        if (this.props.category != this.all){
+        if (this.props.category != ALL_CATEGORIES){
             step.push({ href: `/${ALL_CATEGORIES}`, name: beautifyCategory(ALL_CATEGORIES) });
         }
 

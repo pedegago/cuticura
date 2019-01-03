@@ -14,7 +14,7 @@ class Shopping extends Component {
     render = () => {
         return <section className="shop">
                 <h1>Shopping Cart</h1>
-                {!this.props.cart.length
+                {!this.props.order.products.length
                     ? (
                         <p className="no-items">
                             You have no items in your shopping cart.
@@ -35,7 +35,7 @@ class Shopping extends Component {
                                         <th>Subtotal</th>
                                     </tr>
                                 </thead>
-                                {this.props.cart.map((c) =>
+                                {this.props.order.products.map((c) =>
                                     <ShopItem key={c.id} item={c} />
                                 )}
                             </table>
@@ -48,7 +48,7 @@ class Shopping extends Component {
 
 export const mapStateToProps = (state) => {
     return {
-        cart: state.cart.products
+        order: state.order
     };
 }
 

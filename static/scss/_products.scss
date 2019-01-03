@@ -28,8 +28,6 @@
         width: calc(100% + 20px);
 
         figure {
-            @extend .border;
-
             @include flex(column);
             @include size(auto, 100%);
 
@@ -38,7 +36,26 @@
             position: relative;
 
             &:hover {
+                @extend .border;
+
                 box-shadow: 3px 3px 4px 0 rgba(black, .3);
+                padding: 24px 14px;
+
+                [class^='label-'] {
+                    right: -1px;
+
+                    &.label-red {
+                        @extend .bg-danger;
+
+                        top: 40px;
+                    }
+
+                    &.label-blue {
+                        @extend .bg-info;
+
+                        top: 75px;
+                    }
+                }
             }
         }
 
@@ -103,27 +120,31 @@
 
             color: white;
             position: absolute;
-            right: -1px;
+            right: 0;
             width: 72px;
             padding: 5px 0;
 
             &.label-red {
                 @extend .bg-danger;
 
-                top: 40px;
+                top: 41px;
             }
 
             &.label-blue {
                 @extend .bg-info;
 
-                top: 75px;
+                top: 76px;
             }
         }
     }
 
     @include media-breakpoint-up (sm){
         > div {
-            @include flex($horizontal: flex-start, $vertical: flex-start);
+            @include flex(
+                $horizontal: flex-start,
+                $vertical: flex-start,
+                $wrap: nowrap
+            );
         }
 
         aside {

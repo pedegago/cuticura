@@ -72,8 +72,9 @@
             }
         }
 
-        button {
+        .checkout-btn {
             @extend
+                .btn,
                 .btn-primary,
                 .btn-block;
 

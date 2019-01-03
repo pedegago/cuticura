@@ -18,11 +18,13 @@ class CartItem extends Component {
             }
         }
 
-        this.href = toDetails(this.product.name);
+        this.href = !this.props.checkout
+            ? toDetails(this.product.name)
+            : null;
     };
 
     onRemove = () => {
-        const newCart = this.props.cart.filter(
+        const newCart = this.props.order.products.filter(
             (c) => c.id != this.props.id
         );
 
@@ -39,14 +41,22 @@ class CartItem extends Component {
                     />
                 </a>
                 <div>
-                    <a href={this.href} className="product-name">{this.product.name}</a>
-                    <p className="product-price">${this.product.price}</p>
-                    Qty:
+                    <div className="product-name-container">
+                        <a href={this.href} className="product-name">{this.product.name}</a>
+                        <p className="product-price">${this.product.price}</p>
+                    </div>
 
-                    <Counter id={this.product.id} hideAddButton />
+                    Qty:
+                    <Counter
+                        id={this.product.id}
+                        hideAddButton
+                        readonly={this.props.checkout}
+                    />
 
                     {/* <a className="icon-pencil" /> */}
-                    <a className="icon-trash" onClick={this.onRemove} />
+                    {!this.props.checkout &&
+                        <a className="icon-trash" onClick={this.onRemove} />
+                    }
                 </div>
             </li>
         );
@@ -56,7 +66,7 @@ class CartItem extends Component {
 export const mapStateToProps = (state) => {
     return {
         products: state.products.products,
-        cart: state.cart.products
+        order: state.order
     };
 }
 

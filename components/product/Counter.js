@@ -19,7 +19,7 @@ class Counter extends Component {
     }
 
     static getDerivedStateFromProps = (nextProps, nextState) => {
-        const products = nextProps.cart;
+        const products = nextProps.order.products;
         const product = products.find((p) => p.id == nextProps.id);
 
         if (product){
@@ -65,7 +65,7 @@ class Counter extends Component {
 
         if (this.validate(quantity)) {
             if (this.state.added) {
-                const products = this.props.cart;
+                const products = this.props.order.products;
                 const i = products.findIndex(
                     (p) => p.id == this.props.id
                 );
@@ -96,7 +96,7 @@ class Counter extends Component {
         if (this.validate(quantity)) {
             if (!this.state.added) {
                 this.props.onUpdateCart([
-                    ...this.props.cart,
+                    ...this.props.order.products,
                     this.getProduct(quantity)
                 ]);
 
@@ -126,6 +126,7 @@ class Counter extends Component {
                     placeholder="Qty"
                     type="number"
                     value={this.state.quantity}
+                    disabled={this.props.readonly}
                 />
                 {!this.props.hideAddButton
                     && <button onClick={this.addToCart}>Add to Cart</button>
@@ -137,7 +138,7 @@ class Counter extends Component {
 
 export const mapStateToProps = (state) => {
     return {
-        cart: state.cart.products
+        order: state.order
     };
 };
 

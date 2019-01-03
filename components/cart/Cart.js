@@ -10,7 +10,7 @@ import CartBody from "./CartBody";
 
 class Cart extends Component {
     render = () => {
-        const hasProducts = !!this.props.cart.length;
+        const hasProducts = !!this.props.order.products.length;
 
         return (
             <Popover
@@ -40,7 +40,7 @@ class Cart extends Component {
 export const mapStateToProps = (state) => {
     return {
         toggleCart: state.ui.toggleCart,
-        cart: state.cart.products
+        order: state.order
     };
 }
 

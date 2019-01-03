@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
+
 import { composeWithDevTools } from "redux-devtools-extension";
 import CombineReducers from "../reducers/CombineReducers";
 import thunk from "redux-thunk";
@@ -26,7 +27,7 @@ const makeStore = (initialState = {}, { isServer }) => {
     } else {
         const persistConfig = {
             key: "cuticura",
-            whitelist: ["cart"],
+            whitelist: ["order"],
             storage
         };
 

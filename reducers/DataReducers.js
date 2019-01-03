@@ -75,7 +75,7 @@ export const products = (
     return state;
 };
 
-export const cart = (
+export const order = (
     state = {
         products: []
     },

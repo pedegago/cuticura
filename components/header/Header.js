@@ -30,8 +30,8 @@ class Header extends Component {
     };
 
     countCart = () => {
-        return this.props.cart.length
-            ? <span>{this.props.cart.length}</span>
+        return this.props.order.products.length
+            ? <span>{this.props.order.products.length}</span>
             : null;
     };
 
@@ -51,6 +51,7 @@ class Header extends Component {
                         className="icon-hamburger"
                         onClick={this.toggleNavigation}
                     />
+
                     <a href="/" className="logo">
                         <img src="/static/images/logo.jpg" alt="" />
                     </a>
@@ -72,6 +73,8 @@ class Header extends Component {
                         </a>
                     </div>
 
+                    <a className="sing-in" href="#">Sing In</a>
+
                 </div>
                 <div className={`header-bottom ${this.state.toggleSearch ? "expanded" : "" }`}>
                     <Search />
@@ -87,7 +90,7 @@ export const mapStateToProps = (state) => {
         toggleNavigation: state.ui.toggleNavigation,
         toggleCart: state.ui.toggleCart,
 
-        cart: state.cart.products
+        order: state.order
     };
 }
 

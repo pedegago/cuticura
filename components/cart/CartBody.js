@@ -10,8 +10,12 @@ class CartBody extends Component {
     render = () => {
         return (
             <PopoverBody tag="ul" className="cart-list">
-                {this.props.cart.map((c) => (
-                    <CartItem key={c.id} id={c.id} />
+                {this.props.order.products.map((c) => (
+                    <CartItem
+                        key={c.id}
+                        id={c.id}
+                        checkout={this.props.checkout}
+                    />
                 ))}
             </PopoverBody>
         );
@@ -20,7 +24,7 @@ class CartBody extends Component {
 
 export const mapStateToProps = (state) => {
     return {
-        cart: state.cart.products
+        order: state.order
     };
 }
 

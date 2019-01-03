@@ -8,7 +8,7 @@ class CartHeader extends Component {
     subTotal = () => {
         let subtotal = 0;
 
-        this.props.cart.map((c) => {
+        this.props.order.products.map((c) => {
             for (let i = 0; i < this.props.products.length; i++){
                 const p = this.props.products[i];
 
@@ -26,14 +26,14 @@ class CartHeader extends Component {
         return (
             <PopoverHeader>
                 <p>
-                    <span>{this.props.cart.length} </span>
+                    <span>{this.props.order.products.length} </span>
                     Items in Cart
                 </p>
                 <p className="cart-subtotal">
                     Cart Subtotal:
                     <span>${this.subTotal()}</span>
                 </p>
-                <button>Proceed to Checkout</button>
+                <a href="/checkout">Proceed to Checkout</a>
             </PopoverHeader>
         );
     };
@@ -42,7 +42,7 @@ class CartHeader extends Component {
 export const mapStateToProps = (state) => {
     return {
         products: state.products.products,
-        cart: state.cart.products
+        order: state.order
     };
 }
 

@@ -1,0 +1,50 @@
+.css-10nd86i {
+    .css-2o5izw {
+        height: 31px;
+        min-height: 31px;
+        border-radius: $border-radius;
+        border-width: 1px;
+        background-color: #fff;
+        border-color: #80bdff !important;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    .css-vj8t7z {
+        height: 31px;
+        min-height: 31px;
+        border-radius: $border-radius;
+        border-color: #ced4da;
+
+        &:hover {
+            border-color: #ced4da;
+        }
+    }
+    span.css-d8oujb {
+        background-color: #ced4da;
+        margin-top: 0;
+        height: 29px;
+    }
+    input:focus {
+        box-shadow: none;
+    }
+    .css-15k3avv {
+        border-radius: $border-radius;
+
+        .css-11unzgr {
+            @extend .text-left;
+            > div {
+                background-color: white;
+                color: black;
+            }
+            > div:hover {
+                background-color: #f8f9fa;
+                color: black;
+            }
+            > div:active {
+                background-color: rgb(238, 238, 238);
+                color: black;
+            }
+        }
+        margin-top: 2px;
+    }
+}
